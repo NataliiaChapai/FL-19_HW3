@@ -1,0 +1,301 @@
+@mixin background-image($image: url(../img/1.jpg)) {
+    -webkit-background-image: $image;
+    -moz-background-image: $image;
+    -ms-background-image: $image;
+    background-image: $image;
+}
+
+@each $var in center,
+left {
+    .#{$var} {
+        text-align: ‘#{$var}’;
+    }
+}
+
+$font-sizes: ("small": 12px, "normal": 18px, "large": 24px);
+
+.center {
+    align-items: center;
+    text-align: center;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: $headerFont;
+    list-style: none;
+}
+
+.header {
+    height: 500px;
+    font-weight: normal;
+    width: 100%;
+    border-radius: 0 50% 50% 0;
+    background-image: $mainBackground;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: $mainFontColor;
+
+    h2 {
+        font-family: $headerFont;
+        font-weight: 50;
+        text-align: center;
+        color: $mainFontColor;
+        margin-top: 150px;
+    }
+
+    button {
+        font-size: 10px;
+        background-color: transparent;
+        border: rgb(215, 202, 186) 0.1px solid;
+        box-shadow: none;
+        color: rgb(215, 202, 186);
+        padding: 15px 30px;
+
+    }
+
+    .header-list {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+
+        .header-item {
+            margin-right: 15px;
+
+            a {
+                color: $mainFontColor;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.tours {
+    @extend .center;
+
+    .tours-header {
+        padding-right: 30px;
+        margin: 0;
+        font-weight: 100;
+        font-size: 30px;
+    }
+
+    .tours-list {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 0 200px 30px 200px;
+
+        .tours-item {
+            margin-top: 30px;
+            display: flex;
+            height: 300px;
+            box-shadow: 0px 0px 12px 0px rgba(61, 55, 61, 0.7);
+
+            :not(:last-child) {
+                margin-bottom: 30px;
+            }
+
+            .tours-item-1,
+            .tours-item-2,
+            .tours-item-3 {
+                margin: 0;
+                width: 30%;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .tours-item-1 {
+                @include background-image($tourFirstBackground);
+            }
+
+            .tours-item-2 {
+                @include background-image($tourSecondBackground);
+            }
+
+            .tours-item-3 {
+                @include background-image($tourThirdBackground);
+            }
+
+            .tours-item-text {
+                width: 70%;
+                padding: 10px;
+                overflow: hidden;
+                color: $tourFontColor;
+            }
+
+            h3 {
+                font-size: 30px;
+                margin-bottom: 10px;
+                font-weight: 100;
+            }
+
+            p {
+                font-size: 16px;
+                text-align: left;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.reviews {
+    padding: 0 100px;
+    margin: 0 auto;
+
+    .reviews-container {
+        padding: 15px;
+        background-color: $reviewsBackgroundColor;
+        text-align: center;
+
+        h2 {
+            color: $reviewBackgroundColor;
+            font-weight: 100;
+        }
+
+        .reviews-list {
+            display: flex;
+            justify-content: center;
+
+            .reviews-item {
+                overflow: hidden;
+                @extend .center;
+                width: 32%;
+                padding: 10px;
+                display: flex;
+                text-align: left;
+                background-color: $reviewBackgroundColor;
+                align-items: center;
+                font-style: italic;
+                font-size: map-get($font-sizes, "small");;
+                color: #ffffff;
+            }
+
+            :not(:last-child) {
+                margin-right: 15px;
+            }
+
+            .reviews-img {
+                border-radius: 50% 50%;
+                width: 100px;
+                height: 100px;
+            }
+
+        }
+
+    }
+}
+
+.search {
+    padding: 15px 300px;
+
+    .search-container {
+        height: 100px;
+        background-color: $searchBackgroundColor;
+        text-align: center;
+        padding: 30px 15px 15px 15px;
+        color: #ffffff;
+
+        h2 {
+            color: $searchTextColor;
+            margin-bottom: 30px;
+            font-weight: 100;
+        }
+
+        input,
+        select {
+            border-bottom: #38383a 1px solid;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background-color: transparent;
+        }
+
+        .search-country {
+            margin-right: 50px;
+        }
+
+        select {
+            margin-left: 50px;
+        }
+    }
+}
+
+.footer {
+    background-color: $footerBackgroundColor;
+    font-size: 12px;
+    display: flex;
+    padding: 15px 30px;
+
+    .footer-container-first {
+        width: 30%;
+
+        h3 {
+            color: $footerSecondFontColor;
+        }
+
+        .footer-icon-list {
+            display: flex;
+            margin-top: 15px;
+            margin-bottom: 30px;
+
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 15px;
+            }
+        }
+
+        p {
+            color: $footerFirstFontColor;
+        }
+    }
+
+    .footer-container-second {
+        width: 20%;
+
+        h3,
+        ul {
+            color: $footerSecondFontColor;
+        }
+
+        ul {
+            padding-left: 10px;
+        }
+    }
+
+
+
+    .footer-container-last {
+        width: 30%;
+
+        .footer-payment {
+            display: flex;
+            align-items: flex-end;
+
+            img {
+                width: 40px;
+                height: auto;
+                margin-right: 20px;
+            }
+        }
+
+        input,
+        button {
+            width: 400px;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            background-color: $footerBtnColor;
+            color: #ffffff;
+            margin-bottom: 15px;
+
+        }
+    }
+}
